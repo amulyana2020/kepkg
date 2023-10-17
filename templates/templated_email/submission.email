@@ -1,0 +1,11 @@
+{% block subject %}New Ethic  Submission {{full_name}}{% endblock %}
+{% block plain %}
+  Dear Ethic Comitte,
+
+  {{full_name}} has just submitted the ethic.
+  Please login to admin page and check that.
+
+  Thank you,
+  KEPKG Online Submission
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% block subject %}KEPKG Registration{% endblock %}
+{% block plain %}
+  Dear {{full_name}},
+
+  You just signed up for KEPKG website, using:
+      username: {{username}}
+
+  Thank You
+
+  KEPKG Online Submission
+{% endblock %}

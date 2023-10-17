@@ -1,0 +1,53 @@
+{% load static %}
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg bg-primary fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">KEPKG FKG UI</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-lock"></i>
+                {% if user.is_authenticated %} &nbsp {{user.first_name}} {{user.last_name}}
+                {% else %} &nbsp Member
+                {% endif %}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% if user.is_authenticated %}
+              <a href="{% url 'profile' %}" class="dropdown-item"><i class="fa fa-user"></i> &nbsp My Profile</a>
+                {% if user.is_superuser %}
+              <div class="dropdown-divider"></div>
+                <a href="{% url 'submission_list' %}" class="dropdown-item"><i class="fa fa-book"></i> &nbsp All Ethic Submission</a>
+                {%endif%}
+                    {% if user.is_staff %}
+              <div class="dropdown-divider"></div>
+                <a href="{% url 'reviewer_submission_list' %}" class="dropdown-item"><i class="fa fa-book"></i> &nbsp My Review</a>
+                {%endif%}
+                <div class="dropdown-divider"></div>
+              <a href="{% url 'submission_create' %}" class="dropdown-item"><i class="fa fa-paper-plane"></i> &nbsp Submit New Ethic Submission</a>
+              <a href="{% url 'my_submission_list' %}" class="dropdown-item"><i class="fa fa-book"></i> &nbsp My Ethic Submission</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/accounts/logout/"><i class="fa fa-sign-out-alt"></i> &nbsp Logout</a>
+              {% else %}
+              <a class="dropdown-item" href="/accounts/login/">Login</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/register">Register</a>
+              {% endif %}
+            </div>
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<!-- Page Header -->
+<header class="masthead">
+</header><br><br>
+
+

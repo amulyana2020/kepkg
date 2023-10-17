@@ -1,0 +1,20 @@
+{%extends 'dashboard.html'%}
+
+{% block right-content %}
+<div class="container">
+<div class="card">
+    <div class="card-header">
+        <strong><h3>{{object.title}}</h3></strong>
+    </div>
+    <div class="card-body">   
+      <div class="col-sm-offset-3 col-sm-12">
+            <h4>Anda yakin ingin menghapus pengajuan ini ?</h4>
+            <form method="POST" action=".">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" name="submit" value="Hapus">
+            </form>
+          </div>   
+    </div>
+</div> 
+</div>
+{% endblock %}

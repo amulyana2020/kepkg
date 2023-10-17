@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+
+{% block navbar %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block content %}  
+<div class="container"><br><br>
+<div class="row">
+  <div class="col-lg-6 mx-auto">
+      <div class="card-wrapper">
+        <div class="card-body ">
+            <h3>Welcome {{ new_user.first_name }}!</h3>
+              <p>Your account has been created. We are pleased to have you here.</p>
+              <p>Please login, to submit your ethic proposal.</p>
+              <br>
+              <p>Dr. Lisa Amir</p>
+              <p>Head of KEPKG FKG UI</p>
+        </div>
+      </div>
+  </div>
+</div>
+</div>
+
+
+
+{% endblock %}

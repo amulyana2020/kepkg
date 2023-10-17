@@ -1,0 +1,25 @@
+
+{% if user.is_staff %}
+<div class="list-group">   
+    <a href="#" class="list-group-item primary"><i class="fa fa-bars"></i> <span> &nbsp ADMIN</span></a>
+    <a href="" class="list-group-item"><i class="fa fa-plus"></i> <span>&nbsp Add a Conference</span></a>
+    <a href="" class="list-group-item"><i class="fa fa-plus"></i> <span>&nbsp Add a Hand On</span></a>
+  </div>
+{% endif %}
+
+<div class="list-group">   
+    <a href="#" class="list-group-item primary"><i class="fa fa-bars"></i> <span> &nbsp MY MENU</span></a>
+    <a href="{% url 'profile' %}" class="list-group-item"><i class="fa fa-user"></i> <span>&nbsp My Profile</span></a>
+    <a href="" class="list-group-item"><i class="fa fa-list"></i> <span>&nbsp My Event</span></a>
+    <a href="{% url 'payment' %}" class="list-group-item"><i class="fas fa-money-bill-wave"></i><span>&nbsp My Payment</span></a>
+    <a href="" class="list-group-item"><i class="fab fa-telegram-plane"></i> <span>&nbsp My Submission</span></a>
+    <a href="" class="list-group-item"><i class="fas fa-cog"></i> <span>&nbsp My Settings</span></a>
+  </div>
+  <div class="list-group">   
+      <a href="#" class="list-group-item primary"><i class="fa fa-bars"></i> <span> &nbsp EVENTS</span></a>
+      <a href="" class="list-group-item"><i class="far fa-calendar-check"></i> <span>&nbsp Conferences</span></a>
+      <a href="" class="list-group-item"><i class="far fa-calendar"></i> <span>&nbsp Hands On</span></a>
+      <a href="" class="list-group-item"><i class="fas fa-layer-group"></i><span>&nbsp Presentation</span></a>
+      <a href="" class="list-group-item"><i class="fas fa-map-marked-alt"></i><span>&nbsp Map</span></a>
+    </div>
+

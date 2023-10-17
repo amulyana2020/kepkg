@@ -1,0 +1,187 @@
+{%extends 'dashboard.html'%}
+
+{% block right-content %}
+<div class="container">
+<div class="card">
+    <div class="card-header">
+        <strong><h5>Pengajuan Awal : {{object.title}}</h5></strong>
+    </div>
+    <div class="card-body">   
+                <table class="table table-hover">
+                    <tr>
+                <td>Tanggal Submit</td>
+                <td>:</td>
+                <td>{{object.created_at}}</td>
+            </tr>
+                    <tr>
+                <td>Nama Peneliti</td>
+                <td>:</td>
+                <td>{{object.user.first_name}} {{object.user.last_name}}</td>
+            </tr>
+            <tr>
+                <td>Judul Penelitian</td>
+                <td>:</td>
+                <td>{{object.title}}</td>
+            </tr>
+            <tr>
+                <td>Program Studi</td>
+                <td>:</td>
+                <td>{{object.study_program}}</td>
+            </tr>
+                    <tr>
+                <td>Sample / Subject</td>
+                <td>:</td>
+                <td>{{object.sample_or_subject}}</td>
+            </tr>
+            <tr>
+                <td>Data Primer atau Sekunder</td>
+                <td>:</td>
+                <td>{{object.data}}</td>
+            </tr>
+            <tr>
+                <td>Formulir Pengajuan</td>
+                <td>:</td>
+                <td><a href="{{ MEDIA_URL }}{{ object.submission_file.url }}">Lihat / Download</a></td>
+            </tr>
+            <tr>
+                <td>Informed Consent</td>
+                <td>:</td>
+                <td><a href="{{ MEDIA_URL }}{{ object.consent_file.url }}">Lihat / Download</a></td>
+            </tr>
+            <tr>
+                <td>Lembar Persetujuan</td>
+                <td>:</td>
+                <td><a href="{{ MEDIA_URL }}{{ object.agreement_file.url }}">Lihat / Download</a></td>
+            </tr>
+            <tr>
+                <td>Surat Pengantar dari Institusi</td>
+                <td>:</td>
+                <td><a href="{{ MEDIA_URL }}{{ object.institution_letter.url }}">Lihat / Download</a></td>
+            </tr>
+            <tr>
+                <td>Surat Penyataan Penelitian Belum Dilaksanakan Sebelum Pengajuan Kelaikan Etik</td>
+                <td>:</td>
+                <td><a href="{{ MEDIA_URL }}{{ object.statement_letter.url }}">Lihat / Download</a></td>
+            </tr>
+            <tr>
+                <td>Kajian Ilmiah oleh Peer Group atau Departemen Terkait</td>
+                <td>:</td>
+                <td><a href="{{ MEDIA_URL }}{{ object.peer_group_form.url }}">Lihat / Download</a></td>
+            </tr>
+            <tr>
+                <td>Biodata Peneliti Tentang Penelitian Yang Telah Dilakukan</td>
+                <td>:</td>
+                <td><a href="{{ MEDIA_URL }}{{ object.curriculum_vitae.url }}">Lihat / Download</a></td>
+            </tr>
+            <tr>
+                <td>Bukti Pembayaran</td>
+                <td>:</td>
+                <td><a href="{{ MEDIA_URL }}{{ object.payment.url }}">Lihat / Download</a></td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>:</td>
+                <td>{{object.status}}</td>
+            </tr>
+        </table>
+       
+        {% if not user.is_staff %}
+        {% if reviews %}
+        <a href="{% url 'revision' object.slug %}" class="btn btn-info">UPLOAD REVISI</a>
+        {% endif %}
+        {% endif %}
+        {% if user.is_staff %}
+        <a href="{% url 'review' object.slug %}" class="btn btn-warning">BUAT REVIEW</a>
+        {% endif %}
+        {% if user.is_superuser %}
+        <a href="{{object.get_update_url}}" class="btn btn-danger">UPDATE</a>
+         <a href="{{object.get_delete_url}}" class="btn btn-danger">HAPUS</a>
+        <a href="{% url 'reviewer' object.slug %}" class="btn btn-danger">ASSIGN REVIEWER</a>
+        <a href="{% url 'decision' object.slug %}" class="btn btn-danger">FINAL DECISION</a>
+        {% endif %}
+      </div>
+    </div>
+    {% if user.is_staff %}
+    <div class="card">
+        <div class="card-header">
+            <h5>Reviewer</h5>
+        </div>
+        <div class="card-body">
+            {% if reviewers %}
+            <ul>
+            {% for reviewer in reviewers %}
+            <li>{{reviewer.user.first_name}} {{reviewer.user.last_name}}</li>
+        {% endfor %}
+        </ul>
+        {% else %}
+            <p>Belum ada reviewer.</p>
+        {% endif %}
+        </div>
+
+    </div>
+    {% endif %}
+    <div class="card">
+        <div class="card-header">
+            <h5>Hasil Review</h5>
+        </div>
+        <div class="card-body">
+            {% if reviews %}
+            {% for review in reviews %}
+            <div class="card p-4">
+                <li>Review: {{review.review}}</li>
+            <li>Review File: <a href="{{ MEDIA_URL }}{{ review.file_review.url }}">Lihat / Download</a></li>
+            <li>Reviewer Decision: {{review.decision}}</li>
+                <li>Disubmit oleh Reviewer pada tanggal {{review.created}}</li>
+            </div>
+        {% endfor %}
+        {% else %}
+            <p>Belum ada review untuk pengajuan ini.</p>
+        {% endif %}
+            </div>
+    </div>
+
+
+    <div class="card">
+        <div class="card-header">
+            <h5>Revision</h5>
+        </div>
+        <div class="card-body">
+            {% if revisions %}
+            {% for revision in revisions %}
+            <div class="p-4">
+            <li>File Revisi: <a href="{{ MEDIA_URL }}{{ revision.file_revision.url }}">Lihat / Download</a></li>
+                <li>Disubmit oleh Author pada tanggal {{revision.created_at}}</li>
+            </div>
+        {% endfor %}
+        {% else %}
+            <p>Belum ada review untuk pengajuan ini.</p>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+    <div class="card">
+        <div class="card-header">
+            <h5>Decision</h5>
+        </div>
+        <div class="card-body">
+            {% if decisions %}
+            {% for decision in decisions %}
+            <div class="p-4">
+                <li>Final Decision: {{decision.decision}}</li>
+            <li>File Surat Etik: <a href="{{ MEDIA_URL }}{{ decision.file_decision.url }}">Lihat / Download</a></li>
+                <li>Disubmit oleh Ketua KEPKG pada tanggal {{decision.created_at}}</li>
+            </div>
+        {% endfor %}
+        {% else %}
+            <p class="p-4">Belum ada final decision untuk pengajuan ini.</p>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+</div>
+
+{% endblock %}
+

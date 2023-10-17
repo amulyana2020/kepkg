@@ -1,0 +1,10 @@
+static
+media
+env
+media_root
+db.sqlite3
+*.log
+*.pot
+*.pyc
+.vscode
+migrations

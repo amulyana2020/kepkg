@@ -1,0 +1,17 @@
+{%extends 'dashboard.html' %}
+{% load crispy_forms_tags %}
+
+{% block right-content%}
+{% if form.errors %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+    <div class="container">
+        <div class="card">
+            <h3>Terima kasih untuk review Bapak/Ibu.</h3>
+        </div>
+    </div>
+{% endblock %}

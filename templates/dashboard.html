@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="col-12">
+    {% block right-content%}
+        <div class="container">
+        <div class="card p-4">
+            <h5>POB dan Referensi</h5>
+            <p>Pengusul diharapkan mempelajari POB dan referensi berikut. <br></br> <a href="https://drive.google.com/drive/folders/1z46hunzzkCG0S30lE5rboQO8uAXgZ213" target="_blank">https://drive.google.com/drive/folders/1z46hunzzkCG0S30lE5rboQO8uAXgZ213</a><br>
+                <a href="https://drive.google.com/drive/folders/1bQ2DqN1y6irXBjHe6RUy8D57seCD96xW" target="_blank">https://drive.google.com/drive/folders/1bQ2DqN1y6irXBjHe6RUy8D57seCD96xW</a></p>
+        </div>
+            <div class="card p-4">
+                <h5>Template Dokumen</h5><br>
+                <p><strong>Formulir Pengajuan</strong><br>
+                    <ul>
+                <li>Formulir Penilaian Etik - Penelitian 1 Uji Klinik <a href="http://research.fkg.ui.ac.id/online-submission/wp-content/uploads/2019/06/Formulir-penilaian-etik-penelitian_1-uji-klinik.doc">Download</a></li>
+                <li>Formulir Penilaian Etik - Penelitian 2 Non Klinik PSP <a href="http://research.fkg.ui.ac.id/online-submission/wp-content/uploads/2019/06/Formulir-penilaian-etik-penelitian_2-Non-Klinik-PSP.doc">Download</a></li>
+                <li>Formulir Penilaian Etik - Penelitian 3 Non Klinik <a href="http://research.fkg.ui.ac.id/online-submission/wp-content/uploads/2019/06/Formulir-penilaian-etik-penelitian_3-Non-Klinik.doc">Download</a></li>
+            </ul>
+                </p>
+                <p><strong>Informed Consent</strong><br>
+                <ul>
+                <li>Informed Consent <a href="http://research.fkg.ui.ac.id/online-submission/wp-content/uploads/2019/06/Contoh-Informed-Consent-online-submission.docx">Download</a></li>
+            </ul>
+                </p>
+                <p><strong>Surat Pengantar dari Institusi</strong><br>
+                    <ul>
+                <li>Kepala departemen untuk pengusul dosen/umum, atau pembimbing untuk pengusul mahasiswa</li>
+            </ul>
+                </p>
+                <p><strong>Surat Pernyataan penelitian belum dilaksanakan sebelum pengajuan kelaikan etik</strong><br>
+                    <ul>
+                <li>Ditandatangani peneliti dan pembimbing. Contoh Surat Pernyataan <a href="http://research.fkg.ui.ac.id/online-submission/wp-content/uploads/2019/06/contoh-SURAT-PERNYATAAN.docx">Download</a>
+                  </li>
+            </ul>
+                </p>
+                <p><strong>Kajian ilmiah oleh peer group atau departemen terkait</strong><br>
+                    <ul>
+                <li>Formulir Kajian Ilmiah <a href="http://research.fkg.ui.ac.id/online-submission/wp-content/uploads/2019/06/LEMBAR-KAJIAN-ILMIAH-OLEH-PEER-GROUP-.docx">Download</a></li>
+            </ul>
+                </p>
+                <p><strong>Biodata peneliti tentang penelitian yang telah dilaksanakan</strong><br>
+                    <ul>
+                <li>Formulir Bio Data <a href="http://research.fkg.ui.ac.id/online-submission/wp-content/uploads/2019/06/Formulir-Bio-Data.docx">Download</a></li>
+            </ul>
+                </p>
+                <p><strong>Formulir Pengajuan Revisi</strong><br>
+                    <ul>
+                <li>Formulir Pengauan Revisi <a href="https://research.fkg.ui.ac.id/online-submission/wp-content/uploads/2015/10/Formulir-Revisi-Protokol-Resubmission.docx">Download</a></li>
+            </ul>
+                </p>
+            </div>
+            <div class="card p-4">
+                <p><strong>Video Pembelajaran</strong><br>
+                    <a href="{% url 'submission_create' %}" class="btn btn-primary">Buat Pengajuan Baru</a>
+                </p>
+            </div>
+    </div>
+    {% endblock %}
+
+</div>
+
+{% endblock %}

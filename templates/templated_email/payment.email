@@ -1,0 +1,11 @@
+{% block subject %}Payment {{full_name}}{% endblock %}
+{% block plain %}
+  Hello Admin,
+
+  Payment for {{full_name}} has been updated.
+  Please login to admin page to check that.
+
+  Thank you,
+
+  KPEKG Online Submission
+{% endblock %}

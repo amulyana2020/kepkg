@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+        {% block content %}
+        <div class="container">
+          <div class="row">
+              <h3>Search Journal</h3>
+          </div>    
+          <div class="row">
+              <div class="card col-sm-12 search">
+                  <form action="">
+                      <div class="form-group">
+                        <input name="q" type="text" class="form-control">
+                      </div>
+                      <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+              </div>
+          </div>
+           <div class="row">
+              <table class="table table-hover table-bordered">
+                  {% for object in object_all %}
+                   <tr>
+                     <td>
+                         <a href="{{object.get_public_url}}">{{object.name}}</a>
+                     </td>
+                     
+                   
+                   {% endfor %} 
+                 </table>
+           </div>   
+        </div> 
+        {% include 'footer.html' %} 
+        {% endblock %}

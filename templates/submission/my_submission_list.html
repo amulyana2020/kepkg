@@ -1,0 +1,28 @@
+{% extends 'dashboard.html' %}
+
+{% block right-content %}
+<div class="container">
+<div class="card">
+    <div class="card-header">
+        MY SUBMISSION
+    </div>
+    <div class="card-body">                
+    <table class="table table-hover table-bordered">
+        <tr>
+          <td>Judul Penelitian</td>
+            <td>Tanggal Submit</td>
+          <td>Status</td>
+        </tr>
+        {% for object in object_list%}
+        <tr>
+          <td><a href="{{object.get_absolute_url}}">{{object.title}}</a></td>
+            <td><a href="{{object.get_absolute_url}}">{{object.created_at}}</a></td>
+          <td><a href="{{object.get_absolute_url}}">{{object.status}}</a></td>
+        </tr>
+        {% endfor %} 
+    </table>     
+  </div>
+</div>
+</div> 
+</div>               
+{% endblock %}

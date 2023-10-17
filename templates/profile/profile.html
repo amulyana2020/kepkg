@@ -1,0 +1,66 @@
+{% extends 'dashboard.html' %}
+{% block right-content %}
+<div class="container">
+<div class="card">
+    <div class="card-header">
+        MY PROFILE
+    </div>
+    <div class="card-body">
+      <div class="card-body">
+        {% if user.profile.photo %}
+        <div class="photo">
+            <img src="{{ MEDIA_URL }}{{ user.profile.photo.url }}"  class="rounded-circle photo-border" alt="" width="140" height="140" >
+        </div>
+        {% else %}
+        {% endif %}
+
+        <table class="table table-hover">
+          <tr>
+            <td>Name</td>
+            <td>:</td>
+            <td>{{user.first_name}} {{user.last_name}}</td>
+          </tr>
+          <tr>
+            <td>Full Name with Salutation</td>
+            <td>:</td>
+            <td>{% if user.profile.fullname %}{{user.profile.fullname}}{% else %} 
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td>Date of Birth</td>
+            <td>:</td>
+            <td>{% if user.profile.dob %}{{user.profile.dob}}{% else %}{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Gender</td>
+            <td>:</td>
+            <td>{% if user.profile.gender %}{{user.profile.get_gender_display}}{% else %}{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>:</td>
+            <td>{% if user.profile.address %}{{user.profile.address}} {% else %} {% endif %}</td>
+          </tr>
+          <tr>
+            <td>City</td>
+            <td>:</td>
+            <td>{% if user.profile.city %}{{user.profile.city}} {% else %}{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td>:</td>
+            <td>{% if user.profile.phone %}{{user.profile.phone}} {% else %} {% endif %}</td>
+          </tr>
+          <tr>
+            <td>Mobile Phone</td>
+            <td>:</td>
+            <td>{% if user.profile.mobile %}{{user.profile.mobile}}{% else %}{% endif %}</td>
+          </tr>
+        </table>
+      </div>
+      <a href="{% url 'profile_update'%}" class="btn btn-primary"> UPDATE PROFILE</a>
+    </div>
+</div>
+</div>
+{% endblock %}
