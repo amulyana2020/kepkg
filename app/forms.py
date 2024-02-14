@@ -1,4 +1,5 @@
 from django import forms
+from django_select2.forms import Select2Widget
 from .models import Profile, Submission, Review, Reviewer, Revision, Decision
 from bootstrap_datepicker_plus.widgets  import DatePickerInput
 from django.contrib.auth.models import User
@@ -40,7 +41,7 @@ class SubmissionForm(forms.ModelForm):
     class Meta:
         model = Submission
         fields = '__all__'
-        exclude = ['user',  ]
+        exclude = ['user', 'status' ]
 
 
 
@@ -76,3 +77,7 @@ class ReviewerForm(forms.ModelForm):
         model = Reviewer
         fields = '__all__'
         exclude = [ 'submission', ]
+
+        widgets = {
+            'user': Select2Widget,
+        }
