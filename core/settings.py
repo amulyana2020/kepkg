@@ -32,7 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-#CSRF_TRUSTED_ORIGINS = ['https://kepkg-dev-anha.2.sg-1.fl0.io']
+CSRF_TRUSTED_ORIGINS = ['https://kepkg-dev-anha.2.sg-1.fl0.io']
 # Application definition
 
 INSTALLED_APPS = [
